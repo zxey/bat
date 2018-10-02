@@ -6,6 +6,7 @@ use std::str::FromStr;
 use atty::{self, Stream};
 
 use clap::{App as ClapApp, AppSettings, Arg, ArgGroup, ArgMatches, SubCommand};
+use wild;
 
 use console::Term;
 
@@ -354,7 +355,7 @@ impl App {
             ),
         ).help_message("Print this help message.")
             .version_message("Show version information.")
-            .get_matches()
+            .get_matches_from(wild::args())
     }
 
     pub fn config(&self) -> Result<Config> {
